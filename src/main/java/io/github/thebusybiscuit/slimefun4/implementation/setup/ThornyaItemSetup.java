@@ -9,7 +9,11 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.ThornyaItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.electric.generators.Helio3Generator;
 import io.github.thebusybiscuit.slimefun4.implementation.items.thornya.Spaceship;
+import io.github.thebusybiscuit.slimefun4.implementation.items.thornya.blocks.Launchpad;
+import io.github.thebusybiscuit.slimefun4.implementation.items.thornya.blocks.LaunchpadSides;
 import io.github.thebusybiscuit.slimefun4.implementation.items.thornya.blocks.WorldBlocks;
+import io.github.thebusybiscuit.slimefun4.implementation.items.thornya.crafter.VehicleAssembler;
+import io.github.thebusybiscuit.slimefun4.implementation.items.thornya.vehicles.RocketMK1;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -31,12 +35,30 @@ public class ThornyaItemSetup {
         }
 
         registeredItems = true;
-        new Spaceship(ThornyaGroups.SHIPS, ThornyaItems.MK1_SPACESHIP,
-                new ItemStack[] {new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), null, new ItemStack(Material.NETHER_STAR), null, new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT)})
+        new RocketMK1(ThornyaGroups.SHIPS, ThornyaItems.MK1_SPACESHIP,
+                new ItemStack[] {
+                        null, null, new ItemStack(Material.NETHERITE_INGOT), new ItemStack(Material.NETHERITE_INGOT), null, null,
+                        null, null, new ItemStack(Material.NETHER_STAR), new ItemStack(Material.NETHER_STAR), null, null,
+                        null, new ItemStack(Material.NETHER_STAR), new ItemStack(Material.NETHER_STAR), new ItemStack(Material.NETHER_STAR), new ItemStack(Material.NETHER_STAR), null,
+                        new ItemStack(Material.NETHER_STAR), new ItemStack(Material.DIAMOND), new ItemStack(Material.NETHER_STAR), new ItemStack(Material.NETHER_STAR), SlimefunItems.ENERGIZED_CAPACITOR, new ItemStack(Material.NETHER_STAR),
+                        new ItemStack(Material.NETHER_STAR), new ItemStack(Material.NETHER_STAR), new ItemStack(Material.NETHER_STAR), new ItemStack(Material.NETHER_STAR), new ItemStack(Material.NETHER_STAR), new ItemStack(Material.NETHER_STAR),
+                        new ItemStack(Material.NETHER_STAR), null, new ItemStack(Material.PAPER), new ItemStack(Material.PAPER), null, new ItemStack(Material.IRON_INGOT)
+                }, 1024, 1024)
                 .register(plugin);
+
+        new VehicleAssembler(ThornyaGroups.MACHINES, ThornyaItems.VEHICLE_ASSEMBLER, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {new ItemStack(Material.IRON_BLOCK), new ItemStack(Material.IRON_BLOCK), new ItemStack(Material.IRON_BLOCK), new ItemStack(Material.IRON_BLOCK), new ItemStack(Material.CRAFTING_TABLE), new ItemStack(Material.IRON_BLOCK), new ItemStack(Material.IRON_BLOCK), null, new ItemStack(Material.IRON_BLOCK)}, 1024)
+                .register(plugin);
+
         new SlimefunItem(ThornyaGroups.SUITS, ThornyaItems.SPACE_HELMET, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.LEATHER_HELMET), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), null, new ItemStack(Material.IRON_INGOT)})
                 .register(plugin);
+
+        new SlimefunItem(ThornyaGroups.RESOURCES, ThornyaItems.BASE_UPGRADE, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {new ItemStack(Material.NETHERITE_INGOT), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.LEATHER_HELMET), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), null, new ItemStack(Material.IRON_INGOT)},
+                new SlimefunItemStack(ThornyaItems.BASE_UPGRADE, 1))
+                .register(plugin);
+
         new SlimefunItem(ThornyaGroups.SUITS, ThornyaItems.UPGRADER_OXYGEN_TANK, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.LEATHER_HELMET), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), null, new ItemStack(Material.IRON_INGOT)},
                 new SlimefunItemStack(ThornyaItems.UPGRADER_OXYGEN_TANK, 1))
@@ -99,6 +121,36 @@ public class ThornyaItemSetup {
                 new ItemStack[] {null, null, null, null, minerBlock, null, null, null, null})
                 .register(plugin);
         new WorldBlocks(ThornyaGroups.BLOCKS, ThornyaItems.ZINC_ORE, RecipeType.NULL,
+                new ItemStack[] {null, null, null, null, minerBlock, null, null, null, null})
+                .register(plugin);
+
+        new Launchpad(ThornyaGroups.MACHINES, ThornyaItems.LAUNCHPAD, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {null, null, null, null, minerBlock, null, null, null, null})
+                .register(plugin);
+        new LaunchpadSides(ThornyaGroups.MACHINES, ThornyaItems.LAUNCHPAD_SIDES, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {null, null, null, null, minerBlock, null, null, null, null})
+                .register(plugin);
+
+        // Raw Ores
+        new SlimefunItem(ThornyaGroups.MATERIALS, ThornyaItems.ALUMINUM_RAW, RecipeType.NULL,
+                new ItemStack[] {null, null, null, null, minerBlock, null, null, null, null})
+                .register(plugin);
+        new SlimefunItem(ThornyaGroups.MATERIALS, ThornyaItems.LEAD_RAW, RecipeType.NULL,
+                new ItemStack[] {null, null, null, null, minerBlock, null, null, null, null})
+                .register(plugin);
+        new SlimefunItem(ThornyaGroups.MATERIALS, ThornyaItems.TIN_RAW, RecipeType.NULL,
+                new ItemStack[] {null, null, null, null, minerBlock, null, null, null, null})
+                .register(plugin);
+        new SlimefunItem(ThornyaGroups.MATERIALS, ThornyaItems.SILVER_RAW, RecipeType.NULL,
+                new ItemStack[] {null, null, null, null, minerBlock, null, null, null, null})
+                .register(plugin);
+        new SlimefunItem(ThornyaGroups.MATERIALS, ThornyaItems.URANIUM_RAW, RecipeType.NULL,
+                new ItemStack[] {null, null, null, null, minerBlock, null, null, null, null})
+                .register(plugin);
+        new SlimefunItem(ThornyaGroups.MATERIALS, ThornyaItems.ZINC_RAW, RecipeType.NULL,
+                new ItemStack[] {null, null, null, null, minerBlock, null, null, null, null})
+                .register(plugin);
+        new SlimefunItem(ThornyaGroups.MATERIALS, ThornyaItems.MAGNESIUM_RAW, RecipeType.NULL,
                 new ItemStack[] {null, null, null, null, minerBlock, null, null, null, null})
                 .register(plugin);
     }
