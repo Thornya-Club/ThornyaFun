@@ -11,6 +11,7 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 public class ThornyaItems {
     public static final SlimefunItemStack MK1_SPACESHIP = new SlimefunItemStack("THORNYA_MK1_SPACESHIP", new ItemStack(Material.LEATHER_HORSE_ARMOR), "&bMK1 Spaceship");
     public static final SlimefunItemStack SPACE_HELMET = new SlimefunItemStack("THORNYA_SPACE_HELMET", new ItemStack(Material.LEATHER_HORSE_ARMOR), "&bSpace Helmet");
+    public static final SlimefunItemStack BASE_UPGRADE = new SlimefunItemStack("THORNYA_BASE_UPGRADE", new ItemStack(Material.PAPER), "&eBase Upgrade");
     public static final SlimefunItemStack UPGRADER_OXYGEN_TANK = new SlimefunItemStack("THORNYA_UPGRADER_OXYGEN_TANK", new ItemStack(Material.PAPER), "&e[Upgrade] &bOxygen Tank I");
     public static final SlimefunItemStack UPGRADER_UPGRADER_DEFENSE_1 = new SlimefunItemStack("THORNYA_UPGRADER_DEFENSE_1", new ItemStack(Material.PAPER), "&e[Upgrade] &bDefense I");
     public static final SlimefunItemStack UPGRADER_UPGRADER_DEFENSE_2 = new SlimefunItemStack("THORNYA_UPGRADER_DEFENSE_2", new ItemStack(Material.PAPER), "&e[Upgrade] &bDefense II");
@@ -31,7 +32,16 @@ public class ThornyaItems {
     public static final SlimefunItemStack COBALT_ORE = new SlimefunItemStack("THORNYA_COBALT_ORE", new ItemStack(Material.BROWN_MUSHROOM_BLOCK), "&bCobalt Ore");
     public static final SlimefunItemStack MAGNESIUM_ORE = new SlimefunItemStack("THORNYA_MAGNESIUM_ORE", new ItemStack(Material.BROWN_MUSHROOM_BLOCK), "&bMagnesium Ore");
     public static final SlimefunItemStack ZINC_ORE = new SlimefunItemStack("THORNYA_ZINC_ORE", new ItemStack(Material.BROWN_MUSHROOM_BLOCK), "&bZinc Ore");
-
+    public static final SlimefunItemStack ALUMINUM_RAW = new SlimefunItemStack("THORNYA_ALUMINUM_RAW", new ItemStack(Material.RAW_IRON), "&bAluminum Raw");
+    public static final SlimefunItemStack LEAD_RAW = new SlimefunItemStack("THORNYA_LEAD_RAW", new ItemStack(Material.RAW_IRON), "&bLead Raw");
+    public static final SlimefunItemStack TIN_RAW = new SlimefunItemStack("THORNYA_TIN_RAW", new ItemStack(Material.RAW_IRON), "&bTin Raw");
+    public static final SlimefunItemStack SILVER_RAW = new SlimefunItemStack("THORNYA_SILVER_RAW", new ItemStack(Material.RAW_IRON), "&bSilver Raw");
+    public static final SlimefunItemStack URANIUM_RAW = new SlimefunItemStack("THORNYA_URANIUM_RAW", new ItemStack(Material.RAW_IRON), "&bUranium Raw");
+    public static final SlimefunItemStack ZINC_RAW = new SlimefunItemStack("THORNYA_ZINC_RAW", new ItemStack(Material.RAW_IRON), "&bZinc Raw");
+    public static final SlimefunItemStack MAGNESIUM_RAW = new SlimefunItemStack("THORNYA_MAGNESIUM_RAW", new ItemStack(Material.RAW_IRON), "&bMagnesium Raw");
+    public static final SlimefunItemStack LAUNCHPAD = new SlimefunItemStack("THORNYA_LAUNCHPAD", new ItemStack(Material.SMOOTH_STONE), "&bLaunchpad");
+    public static final SlimefunItemStack LAUNCHPAD_SIDES = new SlimefunItemStack("THORNYA_LAUNCHPAD_SIDES", new ItemStack(Material.SMOOTH_STONE_SLAB), "&bLaunchpad Border");
+    public static final SlimefunItemStack VEHICLE_ASSEMBLER = new SlimefunItemStack("THORNYA_VEHICLE_ASSEMBLER", new ItemStack(Material.SMITHING_TABLE), "&bVehicle Assembler");
 
 
 

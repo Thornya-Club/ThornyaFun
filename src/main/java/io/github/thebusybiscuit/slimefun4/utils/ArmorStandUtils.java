@@ -4,11 +4,21 @@ import javax.annotation.Nonnull;
 
 import io.papermc.lib.PaperLib;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
 
 import io.github.thebusybiscuit.slimefun4.core.services.holograms.HologramsService;
 import io.github.thebusybiscuit.slimefun4.implementation.items.altar.AncientPedestal;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.HologramProjector;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * This class holds utilities for {@link ArmorStand}, useful for classes
@@ -70,5 +80,79 @@ public class ArmorStandUtils {
         armorStand.setGravity(false);
         armorStand.setBasePlate(false);
         armorStand.setRemoveWhenFarAway(false);
+    }
+
+    public static ArmorStand placeArmorStand(Location paramLocation, ItemStack paramItemStack, int paramInt) {
+        ArmorStand armorStand = (ArmorStand)paramLocation.getWorld().spawnEntity(paramLocation.add(0.5D, 0.0D, 0.5D), EntityType.ARMOR_STAND);
+        armorStand.setSmall(false);
+        armorStand.setVisible(false);
+        armorStand.setGravity(false);
+        armorStand.setInvulnerable(true);
+        armorStand.setBasePlate(false);
+        armorStand.setPersistent(true);
+        armorStand.setRemoveWhenFarAway(false);
+        ItemStack itemStack = paramItemStack.clone();
+        itemStack.setAmount(1);
+        ItemMeta itemMeta = itemStack.getItemMeta();
+        itemMeta.setCustomModelData(Integer.valueOf(paramInt));
+        itemStack.setItemMeta(itemMeta);
+        armorStand.getEquipment().setHelmet(itemStack);
+        //addStandID(armorStand.getEntityId());
+        return armorStand;
+    }
+    public static ArmorStand placeArmorStandSit(Location paramLocation) {
+        ArmorStand armorStand = (ArmorStand)paramLocation.getWorld().spawnEntity(paramLocation.add(0.5D, 0.0D, 0.5D), EntityType.ARMOR_STAND);
+        armorStand.setSmall(true);
+        armorStand.setVisible(false);
+        armorStand.setCustomName("SIT");
+        armorStand.setCustomNameVisible(false);
+        armorStand.setGravity(false);
+        armorStand.setInvulnerable(true);
+        armorStand.setBasePlate(false);
+        armorStand.setPersistent(true);
+        armorStand.setRemoveWhenFarAway(false);
+        //addStandID(armorStand.getEntityId());
+        return armorStand;
+    }
+
+    public static ArmorStand getStandBlockData(Location paramLocation) {
+        Location location = paramLocation.getBlock().getLocation();
+        Collection<Entity> collection = paramLocation.getWorld().getNearbyEntities(location.add(0.5D, 0.5D, 0.5D), 0.4D, 0.4D, 0.4D);
+        for (Entity entity : collection) {
+            if (entity instanceof ArmorStand) {
+                if (((ArmorStand) entity).getHelmet().getType() == Material.LEATHER_HORSE_ARMOR) {
+                    //addStandID(entity.getEntityId());
+                    return (ArmorStand) entity;
+                }
+            }
+        }
+        return null;
+    }
+
+    public static ArmorStand getStandAtLocation(Location paramLocation) {
+        Location location = paramLocation.getBlock().getLocation();
+        Collection<Entity> collection = paramLocation.getWorld().getNearbyEntities(location.add(0.5D, 0.5D, 0.5D), 0.4D, 0.4D, 0.4D);
+        for (Entity entity : collection) {
+            if (entity instanceof ArmorStand) {
+                //addStandID(entity.getEntityId());
+                return (ArmorStand) entity;
+            }
+        }
+        return null;
+    }
+
+    public static List<ArmorStand> getStandsAtLocation(Location paramLocation) {
+        Location location = paramLocation.getBlock().getLocation();
+        Collection<Entity> collection = paramLocation.getWorld().getNearbyEntities(location.add(0.5D, 0.5D, 0.5D), 0.4D, 0.4D, 0.4D);
+        List<ArmorStand> armorStands = new ArrayList<>();
+        for (Entity entity : collection) {
+            if (entity instanceof ArmorStand) {
+                //addStandID(entity.getEntityId());
+                armorStands.add((ArmorStand)entity);
+            }
+
+        }
+
+        return armorStands;
     }
 }

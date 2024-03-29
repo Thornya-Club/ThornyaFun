@@ -20,6 +20,7 @@ public class ThornyaGroups {
     public static final SubItemGroup MATERIALS = new SubItemGroup(new NamespacedKey(Slimefun.instance(), "thornya_materials"), THORNYA_MAIN, new CustomItemStack(ThornyaItems.HELIO3, "&bMateriais"), 1);
     public static final SubItemGroup SUITS = new SubItemGroup(new NamespacedKey(Slimefun.instance(), "thornya_suits"), THORNYA_MAIN, getItemSuits(), 1);
     public static final SubItemGroup MACHINES = new SubItemGroup(new NamespacedKey(Slimefun.instance(), "thornya_machines"), THORNYA_MAIN, new CustomItemStack(Material.BLAST_FURNACE, "&bMáquinas"), 1);
+    public static final SubItemGroup RESOURCES = new SubItemGroup(new NamespacedKey(Slimefun.instance(), "thornya_resources"), THORNYA_MAIN, new CustomItemStack(Material.BLAST_FURNACE, "&bRecursos"), 1);
 
 
     static {
