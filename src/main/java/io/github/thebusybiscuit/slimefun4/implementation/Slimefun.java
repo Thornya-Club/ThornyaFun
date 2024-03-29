@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import io.github.thebusybiscuit.slimefun4.implementation.items.thornya.listener.RocketListener;
 import io.github.thebusybiscuit.slimefun4.implementation.setup.*;
 import io.github.thebusybiscuit.slimefun4.storage.Storage;
 import io.github.thebusybiscuit.slimefun4.storage.backend.legacy.LegacyStorage;
@@ -387,7 +386,7 @@ public class Slimefun extends JavaPlugin implements SlimefunAddon {
         logger.log(Level.INFO, "Loading Third-Party plugin integrations...");
         integrations.start();
         gitHubService.start(this);
-        getServer().getPluginManager().registerEvents(new RocketListener(), this);
+
         // Hooray!
         logger.log(Level.INFO, "Slimefun has finished loading in {0}", getStartupTime(timestamp));
     }
