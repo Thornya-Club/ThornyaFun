@@ -58,6 +58,7 @@ public class Launchpad extends TickingMenuBlock {
         BlockStorage.addBlockInfo(b, "rocket", spaceship.getId());
         ArmorStandUtils.placeArmorStand(b.getLocation().add(0,1,0), spaceship.getItem(), 999);
         ArmorStandUtils.placeArmorStandSit(b.getLocation().add(0,0.5,0));
+        // BlockStorage.addBlockInfo(b, "rocket_id", String.valueOf(ArmorStandUtils.getStandAtLocation(b.getLocation().add(0,1,0)).getEntityId()));
 
     }
     public void removeSpaceship(Block b) {

@@ -5,6 +5,7 @@ import javax.annotation.Nonnull;
 import io.papermc.lib.PaperLib;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.ArmorStand;
 
 import io.github.thebusybiscuit.slimefun4.core.services.holograms.HologramsService;
@@ -97,11 +98,10 @@ public class ArmorStandUtils {
         itemMeta.setCustomModelData(Integer.valueOf(paramInt));
         itemStack.setItemMeta(itemMeta);
         armorStand.getEquipment().setHelmet(itemStack);
-        //addStandID(armorStand.getEntityId());
         return armorStand;
     }
     public static ArmorStand placeArmorStandSit(Location paramLocation) {
-        ArmorStand armorStand = (ArmorStand)paramLocation.getWorld().spawnEntity(paramLocation.add(0.5D, 0.0D, 0.5D), EntityType.ARMOR_STAND);
+        ArmorStand armorStand = (ArmorStand)paramLocation.getWorld().spawnEntity(paramLocation.add(0.5D, 0.5D, 0.5D), EntityType.ARMOR_STAND);
         armorStand.setSmall(true);
         armorStand.setVisible(false);
         armorStand.setCustomName("SIT");
@@ -111,7 +111,6 @@ public class ArmorStandUtils {
         armorStand.setBasePlate(false);
         armorStand.setPersistent(true);
         armorStand.setRemoveWhenFarAway(false);
-        //addStandID(armorStand.getEntityId());
         return armorStand;
     }
 
@@ -121,7 +120,6 @@ public class ArmorStandUtils {
         for (Entity entity : collection) {
             if (entity instanceof ArmorStand) {
                 if (((ArmorStand) entity).getHelmet().getType() == Material.LEATHER_HORSE_ARMOR) {
-                    //addStandID(entity.getEntityId());
                     return (ArmorStand) entity;
                 }
             }
@@ -134,7 +132,6 @@ public class ArmorStandUtils {
         Collection<Entity> collection = paramLocation.getWorld().getNearbyEntities(location.add(0.5D, 0.5D, 0.5D), 0.4D, 0.4D, 0.4D);
         for (Entity entity : collection) {
             if (entity instanceof ArmorStand) {
-                //addStandID(entity.getEntityId());
                 return (ArmorStand) entity;
             }
         }
@@ -147,12 +144,31 @@ public class ArmorStandUtils {
         List<ArmorStand> armorStands = new ArrayList<>();
         for (Entity entity : collection) {
             if (entity instanceof ArmorStand) {
-                //addStandID(entity.getEntityId());
                 armorStands.add((ArmorStand)entity);
             }
 
         }
 
         return armorStands;
+    }
+
+    public static List<ArmorStand> getStandsAtLocation(Location paramLocation, double x, double y, double z) {
+        Location location = paramLocation.getBlock().getLocation();
+        Collection<Entity> collection = paramLocation.getWorld().getNearbyEntities(location.add(x, y, z), 1D, 3D, 1D);
+        List<ArmorStand> armorStands = new ArrayList<>();
+        for (Entity entity : collection) {
+            if (entity instanceof ArmorStand) {
+                armorStands.add((ArmorStand)entity);
+            }
+
+        }
+
+        return armorStands;
+    }
+
+    public static Block getBlockUnderArmorStand(ArmorStand armorStand) {
+        Location location = armorStand.getLocation();
+        location.setY(location.getY() - 1);
+        return location.getBlock();
     }
 }
